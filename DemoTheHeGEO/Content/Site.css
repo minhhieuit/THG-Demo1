@@ -1,0 +1,410 @@
+﻿@import url(libs/font-awesome/css/font-awesome.min.css);
+@import url(libs/bootstrap/css/bootstrap.min.css);
+
+/*==========================================================
+	2. GENERAL
+==========================================================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    border: 0;
+    font-size: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+body {
+    font-size: 14px;
+    color: #757575;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    clear: both;
+    color: #373737;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
+img {
+    border: none;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: #373737;
+}
+
+    a:hover {
+        color: #c9a96e;
+        text-decoration: none;
+    }
+
+    a:focus {
+        text-decoration: none;
+        color: inherit;
+        outline: none;
+    }
+
+a,
+button,
+input {
+    transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+}
+
+    input[type=text],
+    input[type=email],
+    input[type=password],
+    input[type=number],
+    input[type=search],
+    textarea {
+        border: 1px solid #d5d5d5;
+        padding: 8px 15px;
+        font-size: 14px;
+        color: #757575;
+        font-style: italic;
+        border-radius: 0;
+    }
+
+        button,
+        input[type=text]:focus,
+        input[type=email]:focus,
+        input[type=password]:focus,
+        input[type=number]:focus,
+        input[type=search]:focus,
+        textarea:focus {
+            border-color: #c9a96e;
+            outline: none;
+        }
+
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > tfoot > tr > td,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+    border-color: #FCD998;
+}
+
+/*==========================================================
+	3. ELEMENTS
+==========================================================*/
+.clear {
+    clear: both;
+}
+
+#Main {
+    width: calc(100% - 20px);
+    margin: auto;
+}
+
+#Main-real-estate .Search {
+    width: 35%;
+    display: inline-block;
+    float: left;
+    margin-top: 20px;
+    position: relative;
+    padding: 20px;
+}
+
+#Main-real-estate {
+    background: #f4f4f2;
+}
+
+    #Main-real-estate .Map {
+        width: 65%;
+        display: inline-block;
+        float: right;
+    }
+
+    #Main-real-estate .Map {
+        width: 65%;
+        margin-top:20px;
+        height: 600px;
+    }
+
+.Search .search-left {
+    width: 50%;
+    display: inline-block;
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+
+.Search .advancerd-search {
+    display: inline-block;
+    float: right;
+}
+
+.search-left h3 {
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.advancerd-search h3 {
+    font-size: 15px;
+    text-align: right;
+}
+
+    .advancerd-search h3 .fa-plus-square-o {
+        padding-left: 6px;
+        display: inline-block;
+        padding-top: 1px;
+        float: right;
+    }
+
+.feature {
+    width: 100%;
+    padding-left: 20px;
+    left: 0;
+    top: 0px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in-out 0s;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    display: none;
+}
+
+.open {
+    top: 30px;
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+
+.feature .item-feature {
+    width: 33%;
+    display: inline-block;
+    float: left;
+}
+
+    .feature .item-feature label {
+        font-size: 15px;
+        font-weight: 400;
+        color: #000;
+    }
+
+.feature h2 {
+    font-size: 19px;
+    padding-bottom: 11px;
+    padding-top: 30px;
+}
+
+.item-feature {
+    padding-bottom: 5px;
+}
+
+.top-click {
+    cursor: pointer;
+}
+
+.search-btoom .left {
+    width: 50%;
+    display: inline-block;
+    float: left;
+}
+
+.search-btoom .right {
+    width: 50%;
+    display: inline-block;
+    float: right;
+}
+
+.search-btoom .left select {
+    width: 100%;
+    height: 35px;
+    border-right: 1px solid #ddd;
+}
+
+.search-btoom .left label {
+    padding-bottom: 10px;
+    color: #000;
+    padding-top: 20px;
+}
+
+.search-btoom .left input[type=text] {
+    width: 100%;
+    height: 35px;
+    position: relative;
+}
+
+.location {
+    position: relative;
+}
+
+    .location span {
+        position: absolute;
+        right: 10px;
+        top: 55px;
+        font-size: 17px;
+    }
+
+    .nav-result .item:nth-child(2n) {
+        margin-right: 0;
+    }
+
+.result .nav-item {
+    background: white;
+    text-align: center;
+}
+
+    .result .nav-item .title {
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+
+        .result .nav-item .title a {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+
+.title-result {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 20px 0 10px 0;
+}
+
+.result .nav-item .price {
+    background: #0dcdbd;
+    color: white;
+    display: inline-block;
+    margin-top: 7px;
+    padding: 4px 15px;
+    margin-bottom: 3px;
+}
+
+.result .nav-item .info .type i img {
+    width: 20px;
+}
+
+.result .nav-item .info .type i {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    opacity: 0.6;
+    display: inline-block;
+}
+
+.result .nav-item .info .type span {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    opacity: 0.6;
+    display: inline-block;
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px;
+}
+
+.result .nav-item .rating {
+    padding-bottom: 12px;
+}
+
+/*css for map*/
+#map{
+	margin: 0;
+	padding: 0;
+	height: 400px;
+	max-width: none;
+}
+#map img {
+	max-width: none !important;
+}
+.gm-style-iw {
+	width: 350px !important;
+	top: 15px !important;
+	left: 0px !important;
+	background-color: #fff;
+	box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+	border: 1px solid rgba(72, 181, 233, 0.6);
+	border-radius: 2px 2px 10px 10px;
+}
+#iw-container {
+	margin-bottom: 10px;
+}
+#iw-container .iw-title {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 22px;
+	font-weight: 400;
+	padding: 10px;
+	background-color: #48b5e9;
+	color: white;
+	margin: 0;
+	border-radius: 2px 2px 0 0;
+}
+#iw-container .iw-content {
+	font-size: 13px;
+	line-height: 18px;
+	font-weight: 400;
+	margin-right: 1px;
+	padding: 15px 5px 20px 15px;
+	max-height: 140px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.iw-content img {
+	float: right;
+	margin: 0 5px 5px 10px;	
+}
+.iw-subTitle {
+	font-size: 16px;
+	font-weight: 700;
+	padding: 5px 0;
+}
+.iw-bottom-gradient {
+	position: absolute;
+	width: 326px;
+	height: 25px;
+	bottom: 10px;
+	right: 18px;
+	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+}
+.mCustomScrollbar{
+    height:480px;
+}
