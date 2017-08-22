@@ -1,135 +1,139 @@
-﻿<div class="Search">
-    <div class="search-top">
-        <div class="search-left">
-            <h3 class="top">Search</h3>
+﻿@model DemoTheHeGEO.Models.PlaceObj
+<div class="Search">
+    <div class="content mCustomScrollbar">
+        <div class="search-top">
+            <div class="search-left">
+                <h3 class="top">Search</h3>
+            </div>
+            <div class="advancerd-search">
+                <h3 class="top-click">Advancerd search<i class="fa fa-plus-square-o" aria-hidden="true"></i></h3>
+                <div class="feature">
+                    <h2>Features</h2>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="item-feature">
+                        <input type="checkbox">
+                        <label for="">Free Paking</label>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
         </div>
-        <div class="advancerd-search">
-            <h3 class="top-click">Advancerd search<i class="fa fa-plus-square-o" aria-hidden="true"></i></h3>
-            <div class="feature">
-                <h2>Features</h2>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
+        <div class="search-btoom">
+            <div class="left">
+                <label for="">District</label>
+                @*<select class="selectpicker" id="btn-district">
+                        <option value="">-----Select district-----</option>
+                        <optgroup label="Noi Thanh">
+                            <option value="1">Ba Dinh</option>
+                            <option value="2">Cau Giay</option>
+                            <option value="3">Hoan Kiem</option>
+                            <option value="4">Hoang Mai</option>
+                            <option value="5">Thanh Xuan</option>
+                            <option value="6">Tay Ho</option>
+                            <option value="7">Tu Liem</option>
+                            <option value="8">Dong Da</option>
+                        </optgroup>
+                    </select>*@
+                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                <div class="location">
+                    <label for="">Price Starts</label>
+                    <input type="text" placeholder="Enter price starts" id="begin-price">
+                    <span>VND</span>
                 </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
+            </div>
+            <div class="right">
+                <label for="">Property Type</label>
+                @Html.DropDownList("CategoryID", (SelectList)ViewBag.Categories,"Select Category", htmlAttributes: new { @class = "selectpicker", @id = "btn-category" })
+                @*<select class="selectpicker" id="btn-category">
+                    <option>-----Select category-----</option>
+                    <optgroup label="Ban">
+                        <option value="3">Can ho chung cu</option>
+                        <option value="4">Nha rieng</option>
+                        <option value="5">Biet thu lien ke</option>
+                        <option value="6">Nha mat pho</option>
+                        <option value="7">Dat nen du an</option>
+                        <option value="8">Dat</option>
+                    </optgroup>
+                    <optgroup label="Thue">
+                        <option value="12">Can ho chung cu</option>
+                        <option value="13">Nha rieng</option>
+                        <option value="14">Biet thu lien ke</option>
+                        <option value="15">Nha mat pho</option>
+                        <option value="16">Dat nen du an</option>
+                        <option value="17">Dat</option>
+                    </optgroup>
+                </select>*@
+                <div class="location">
+                    <label for="">Price Ends</label>
+                    <input type="text" placeholder="Enter price ends" id="end-price">
+                    <span>VND</span>
                 </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="item-feature">
-                    <input type="checkbox">
-                    <label for="">Free Paking</label>
-                </div>
-                <div class="clear"></div>
             </div>
         </div>
         <div class="clear"></div>
-    </div>
-    <div class="search-btoom">
-        <div class="left">
-            <label for="">Property Type</label>
-            <select class="selectpicker">
-                <optgroup label="Picnic">
-                    <option>Mustard</option>
-                    <option>Ketchup</option>
-                    <option>Relish</option>
-                </optgroup>
-                <optgroup label="Camping">
-                    <option>Tent</option>
-                    <option>Flashlight</option>
-                    <option>Toilet Paper</option>
-                </optgroup>
-            </select>
-            <div class="location">
-                <label for="">Location</label>
-                <input type="text" placeholder="Enter location">
-                <span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-            </div>
+        <div class="btn-search" id="btnSearch"><a href="#" class="btn btn-success">Search</a></div>
 
+        <div class="result">
+            <h3 class="title-result">Result</h3>
+            <div class="nav-result" id="list-result">
 
-        </div>
-        <div class="right"></div>
-    </div>
-    <div class="result">
-        <h3 class="title-result">Result</h3>
-        <div class="content mCustomScrollbar">
-            <div class="nav-result">
-                <div class="item">
-                    <div class="images">
-                        <a href="">
-                            <img src="~/images/6.jpg" />
-                        </a>
-                    </div>
-                    <div class="nav-item" id="list-result">
-                        <h3 class="title"><a href="">32955 valley stress</a></h3>
-                        <p class="adress">San Francisco</p>
-                        <p class="price">$42.000</p>
-                        <div class="info">
-                            <div class="type">
-                                <i><img src="images/apartment-3.png" alt=""></i>
-                                <span>APARTMENT</span>
-                            </div>
-                        </div>
-                        <div class="rating" data-rating="5">
-                            <span class="stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
-

@@ -1,0 +1,41 @@
+@media only screen and (max-width: 990px) {
+    #Main-real-estate .Search{
+        width:100%;
+    }
+    #Main-real-estate .Map{
+        width:100%;
+    }
+}
+@media only screen and (max-width: 736px){
+    header .logo {
+        width: 100%;
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 667px){
+    .nav-result .item{
+        width:100%;
+        margin-right:0;
+    }
+     .nav-result .item .images img{
+        width:100%;
+    }
+}
+@media only screen and (max-width:540px){
+    .search-left h3.top{
+        display:none;
+    }
+   .Search .search-left{
+        display:none;
+    }
+   .feature .item-feature{
+       width:50%;
+       padding-bottom:10px;
+   }
+   .search-btoom .left{
+       width:100%;
+   }
+   .search-btoom .right{
+       width:100%;
+   }
+}

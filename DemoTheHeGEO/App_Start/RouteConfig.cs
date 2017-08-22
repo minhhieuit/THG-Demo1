@@ -16,8 +16,16 @@ namespace DemoTheHeGEO
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "DemoTheHeo.Controllers" }
             );
+
+            routes.MapRoute(
+               name: "Admin",
+               url: "Admin/{controller}/{action}/{id}",
+               defaults: new { action = "Admin", id = UrlParameter.Optional },
+               namespaces: new[] { "DemoTheHeo.Areas.Admin.Controllers" }
+           );
         }
     }
 }

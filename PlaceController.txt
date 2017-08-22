@@ -1,0 +1,234 @@
+using DemoTheHeGEO.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace DemoTheHeGEO.Controllers
+{
+    public class PlaceController : ApiController
+    {
+        // GET api/values
+        DemoContext db = new DemoContext();
+        [HttpGet]
+        public IHttpActionResult Get(int id)
+        {
+            return Ok(db.Categories.FirstOrDefault(o => o.ID == id));
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetAllMarkers()
+        {
+            var Places = db.Places.Select(o => new PlaceObj
+            {
+                ID = o.ID,
+                Name = o.Name,
+                Email = o.Email,
+                Website = o.Website,
+                Description = o.Description,
+                Phone = o.Phone,
+                Address = o.Address,
+                Price = o.Price,
+                MapLatitude = o.MapLatitude,
+                MapLongitude = o.MapLongitude,
+                Category = o.Category,
+                District = o.District1
+            }).ToList();
+            return Ok(Places);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetCenter(int District)
+        {
+            var district = db.Districts.Where(o => o.ID == District).FirstOrDefault();
+            return Ok(district);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetMarkerByName(string name)
+        {
+            if (name != null)
+            {
+                if (db.Places.Where(o => o.Name.Contains(name)).Any())
+                {
+                    return Ok(db.Places.Where(o => o.Name.Contains(name)).Select(o => new
+                    {
+                        lat = o.MapLatitude,
+                        lng = o.MapLongitude,
+                        name = o.Name,
+                        category = db.Categories.Where(i => i.ID == o.CategoryID).Select(s => s.Name)
+                    }).ToList());
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+
+                return Ok();
+            }
+        }
+        //[HttpPost]
+        //public IHttpActionResult GetMarkerByPrice(decimal begin, decimal end)
+        //{
+        //    var Places = db.Places.Where(o => o.Price >= begin && o.Price <= end).Select(o => new
+        //    {
+        //        lat = o.MapLatitude,
+        //        lng = o.MapLongitude,
+        //        name = o.Name,
+        //        category = db.Categories.Where(i => i.ID == o.CategoryID).Select(s => s.Name)
+        //    }).ToList();
+        //    return Ok(Places);
+        //}
+
+        [HttpPost]
+        public IEnumerable<object> Post([FromBody] List<SearchObj> value)
+        {
+
+            foreach (var item in value)
+            {
+                if (item.Type == (int)SearchParaType.FullSearch)
+                {
+                    var Places = db.Places.Where(p =>
+                    (
+                        ((item.PriceBegin == null || item.PriceBegin <= p.Price)
+                        && (item.PriceEnd == null || item.PriceEnd >= p.Price))
+                        && (item.Category == null || p.CategoryID == item.Category)
+                    )
+                    ).Select(o => new PlaceObj
+                    {
+                        ID = o.ID,
+                        Name = o.Name,
+                        Email = o.Email,
+                        Website = o.Website,
+                        Description = o.Description,
+                        Phone = o.Phone,
+                        Address = o.Address,
+                        Price = o.Price,
+                        MapLatitude = o.MapLatitude,
+                        MapLongitude = o.MapLongitude,
+                        Category = o.Category,
+                        District = o.District1
+                    }).ToList();
+
+                    return Places;
+                    ////if (item.PriceBegin != null && item.PriceEnd != null && item.District != 0 && item.Category != 0)
+                    ////{
+                    //var Places = db.Places.Where(p => ((item.PriceBegin == null || p.Price >= item.PriceBegin)
+                    //                && (item.PriceEnd == null || p.Price <= item.PriceEnd))
+                    //).Select(o => new
+                    //{
+                    //    lat = o.MapLatitude,
+                    //    lng = o.MapLongitude,
+                    //    name = o.Name,
+                    //    price = o.Price,
+                    //    category = db.Categories.FirstOrDefault(c=>c.ID == o.CategoryID).Name,
+                    //    latDistrict = db.Districts.FirstOrDefault(d=>d.ID == item.District).MapLatitude,
+                    //    lngDistrict = db.Districts.FirstOrDefault(d=>d.ID == item.District).MapLongitude,
+                    //}).ToList();
+                    //if (Places.Count > 0)
+                    //{
+                    //return Places;
+                    //}
+                    //else
+                    //{
+                    //    return db.Places.Select(o => new
+                    //    {
+                    //        lat = o.MapLatitude,
+                    //        lng = o.MapLongitude,
+                    //        name = o.Name,
+                    //        price = o.Price,
+                    //        category = db.Categories.FirstOrDefault(c => c.ID == o.CategoryID).Name,
+                    //        latDistrict = db.Districts.FirstOrDefault(d => d.ID == item.District).MapLatitude,
+                    //        lngDistrict = db.Districts.FirstOrDefault(d => d.ID == item.District).MapLongitude,
+                    //    }).ToList();
+                    //}
+
+                    //var Places = db.Categories.Where(o => o.ID == item.Category).Select(o => new
+                    //{
+                    //    lat = o.Places.Where(p => p.CategoryID == item.Category).Select(p => p.MapLatitude),
+                    //    lng = o.Places.Where(p => p.CategoryID == item.Category).Select(p => p.MapLongitude),
+                    //    name = o.Places.Where(p => p.CategoryID == item.Category).Select(p => p.Name),
+                    //    price = o.Places.Where(p => p.CategoryID == item.Category).Select(p => p.Price),
+                    //    category = o.Name,
+                    //    latDistrict = db.Districts.FirstOrDefault(i => i.ID == item.District).MapLatitude,
+                    //    lngDistrict = db.Districts.FirstOrDefault(i => i.ID == item.District).MapLongitude
+                    //}).ToList();
+                    //    var Places = db.Places.Where(o => o.Price >= (item.PriceBegin ?? 0) && o.Price <= (item.PriceEnd ?? 0) && o.CategoryID == item.Category)
+                    //        .Select(o => new
+                    //        {
+                    //            lat = o.MapLatitude,
+                    //            lng = o.MapLongitude,
+                    //            name = o.Name,
+                    //            price = o.Price,
+                    //            category = db.Categories.FirstOrDefault(i => i.ID == item.Category).Name,
+                    //            latDistrict = db.Districts.FirstOrDefault(i => i.ID == (item.District ?? 1)).MapLatitude,
+                    //            lngDistrict = db.Districts.FirstOrDefault(i => i.ID == (item.District ?? 1)).MapLongitude
+                    //        }).ToList();
+                    //    return Places;
+                    //}
+                    //else
+                    //{
+                    //    var Places = db.Places.Where(o => o.Price >= (item.PriceBegin ?? 0) || o.Price <= (item.PriceEnd ?? 0))
+                    //        .Select(o => new
+                    //        {
+                    //            lat = o.MapLatitude,
+                    //            lng = o.MapLongitude,
+                    //            name = o.Name,
+                    //            price = o.Price,
+                    //            category = db.Categories.Where(i => i.ID == o.CategoryID).Select(s => s.Name),
+                    //            latDistrict = db.Districts.FirstOrDefault(i => i.ID == 1).MapLatitude,
+                    //            lngDistrict = db.Districts.FirstOrDefault(i => i.ID == 1).MapLongitude
+                    //        }).ToList();
+                    //    return Places;
+                    //}
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            return null;
+            //  decimal begin = value.begin;
+            //    decimal end = value.end;
+            // if (begin > 10)
+            //{
+            //    var Places = db.Places.Where(o => o.Price >= begin && o.Price <=  end).Select(o => new
+            //    {
+            //        lat = o.MapLatitude,
+            //        lng = o.MapLongitude,
+            //        name = o.Name,
+            //        category = db.Categories.Where(i => i.ID == o.CategoryID).Select(s => s.Name)
+            //    }).ToList();
+            //    json = JsonConvert.SerializeObject(Places);
+            //    return new HttpResponseMessage()
+            //    {
+            //        Content = new StringContent(json)
+            //    };
+            //}
+            //else
+            //{
+            //return new HttpResponseMessage()
+            //{
+            //    Content = new StringContent("Nho hon 10 ")
+            //};
+            //}
+        }
+        // GET api/values/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
+
+        //// POST api/values
+        //public void Post([FromBody]string value)
+        //{
+        //}
+    }
+}

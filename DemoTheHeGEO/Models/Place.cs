@@ -17,6 +17,9 @@ namespace DemoTheHeGEO
         [StringLength(12)]
         public string Phone { get; set; }
 
+        [Display(Name = "Email address")]
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         [StringLength(255)]
         public string Email { get; set; }
 
@@ -25,12 +28,6 @@ namespace DemoTheHeGEO
 
         [Column(TypeName = "text")]
         public string Description { get; set; }
-
-        [StringLength(50)]
-        public string Province { get; set; }
-
-        [StringLength(50)]
-        public string District { get; set; }
 
         [StringLength(50)]
         public string Address { get; set; }
@@ -44,6 +41,10 @@ namespace DemoTheHeGEO
 
         public int? CategoryID { get; set; }
 
-        //public virtual Category Category { get; set; }
+        public int? DistrictID { get; set; }
+        [Display(Name = "Category")]
+        public virtual Category Category { get; set; }
+        [Display(Name = "District")]
+        public virtual District District { get; set; }
     }
 }
